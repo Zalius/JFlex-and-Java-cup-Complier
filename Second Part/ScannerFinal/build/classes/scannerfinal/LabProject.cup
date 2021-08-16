@@ -1,0 +1,38 @@
+package scannerfinal;
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+	public static void main(String args[]) throws Exception {
+		new parser(new Lexer(new BufferedReader(new FileReader("myInputFile.txt")))).parse();
+	}
+:}
+
+terminal SEMI,LBRACE,RBRACE,WHILE,ASS_OP,LPAREN, RPAREN,NUMBER,ID,GREATER_THAN,LESS_THAN,EQUAL_TO,
+IF,ELSE, WHERE,BEGIN, END , UNTIL,FOR , PRINT , PLUS,MINUS,MULT,DIV;
+
+non terminal start_of_grammar,stmt,while_stmt,stmt_list,for_stmt,if_else_stmt,ass_stmt,rel_exp,rel_op,print;
+
+
+
+start_of_grammar::=stmt_list {:System.out.println("Success");:} | error {:System.out.println("Syntax Error"); System.exit(0);:};
+stmt_list::=stmt_list stmt SEMI | ;
+stmt::=while_stmt | ass_stmt | for_stmt | if_else_stmt | print;
+
+while_stmt::=WHILE rel_exp WHERE BEGIN stmt_list END {: System.out.println("while loop found");:};
+
+for_stmt::=FOR ass_stmt UNTIL NUMBER WHERE BEGIN stmt_list END {: System.out.println("for loop found");:};
+
+if_else_stmt::= IF rel_exp WHERE BEGIN stmt_list ELSE WHERE stmt_list END {: System.out.println("if cond found");:};
+
+
+rel_exp::=ID rel_op NUMBER | NUMBER rel_op ID;
+ass_stmt::=ID ASS_OP NUMBER ;
+print::= PRINT LPAREN ID RPAREN {: System.out.println("PRINT IS HERE");:};
+rel_op::=GREATER_THAN | LESS_THAN | EQUAL_TO;
+
+
+
+
+

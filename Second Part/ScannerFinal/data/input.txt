@@ -1,0 +1,30 @@
+myVar=6;
+secVar=30;
+
+for i=8 until 14 where
+	begin
+		u=4;
+	end
+;
+
+
+while x<5 where
+	begin
+		y=2;
+		x=5;
+                print(x);
+	end
+;
+
+if x<5 where
+	begin
+		y=2;
+		x=5;
+else where
+                y=2;
+		x=5;
+	end
+;
+    
+        
+    

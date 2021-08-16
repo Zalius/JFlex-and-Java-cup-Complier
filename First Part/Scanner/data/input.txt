@@ -1,0 +1,12 @@
+//This comment should get ignored hehehehehe
+if a<=26 where b == sum else b == 0
+Hello
+Nice
+salam
++ - 
+
+ui = 54
+
+/*
+HERE we have more comments to see what program does
+*/
